@@ -8,7 +8,7 @@ VGG16 architecture is well depicted in the following image:
 image source : https://blog.heuritech.com/2016/02/29/a-brief-report-of-the-heuritech-deep-learning-meetup-5/
 
 
-* modified (batch norm. added in each cnn layer)
+### modified (batch norm. added in each cnn layer)
 ```python
         # 1-1 conv layer
         tnn.Conv3d(3, 64, kernel_size=3, padding=1),
