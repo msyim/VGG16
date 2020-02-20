@@ -11,13 +11,13 @@ image source : https://blog.heuritech.com/2016/02/29/a-brief-report-of-the-heuri
 ### modified (batch norm. added in each cnn layer)
 ```python
         # 1-1 conv layer
-        tnn.Conv3d(3, 64, kernel_size=3, padding=1),
-        tnn.BatchNorm3d(64),
+        tnn.Conv2d(3, 64, kernel_size=3, padding=1),
+        tnn.BatchNorm2d(64),
         tnn.ReLU(),
 
         # 1-2 conv layer
-        tnn.Conv3d(64, 64, kernel_size=3, padding=1),
-        tnn.BatchNorm3d(64),
+        tnn.Conv2d(64, 64, kernel_size=3, padding=1),
+        tnn.BatchNorm2d(64),
         tnn.ReLU(),
 
 ```
