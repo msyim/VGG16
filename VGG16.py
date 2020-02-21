@@ -82,7 +82,7 @@ vgg16.cuda()
 # Loss, Optimizer & Scheduler
 cost = tnn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(vgg16.parameters(), lr=LEARNING_RATE)
-scheduler = torch.optim.scheduler.ReduceLROnPlateau(optimizer)
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer)
 
 # Train the model
 for epoch in range(EPOCH):
