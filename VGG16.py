@@ -4,7 +4,7 @@ import torchvision.datasets as dsets
 import torchvision.transforms as transforms
 
 BATCH_SIZE = 10
-LEARNING_RATE = 0.01
+LEARNING_RATE = 0.001
 EPOCH = 50
 N_CLASSES = 25
 
@@ -51,9 +51,9 @@ class VGG16(tnn.Module):
     # Conv blocks (BatchNorm + ReLU activation added in each block)
     self.layer1 = vgg_conv_block([3,64], [64,64], [3,3], [1,1], 2, 2)
     self.layer2 = vgg_conv_block([64,128], [128,128], [3,3], [1,1], 2, 2)
-    self.layer3 = vgg_conv_block([128,256], [256,256], [3,3], [1,1], 2, 2)
-    self.layer4 = vgg_conv_block([256,512], [512,512], [3,3], [1,1], 2, 2)
-    self.layer5 = vgg_conv_block([512,512], [512,512], [3,3], [1,1], 2, 2)
+    self.layer3 = vgg_conv_block([128,256,256], [256,256,256], [3,3,3], [1,1,1], 2, 2)
+    self.layer4 = vgg_conv_block([256,512,512], [512,512,512], [3,3,3], [1,1,1], 2, 2)
+    self.layer5 = vgg_conv_block([512,512,512], [512,512,512], [3,3,3], [1,1,1], 2, 2)
 
     # FC layers
     self.layer6 = vgg_fc_layer(7*7*512, 4096)
@@ -61,11 +61,10 @@ class VGG16(tnn.Module):
 
     # Final layer
     self.layer8 = tnn.Sequential(
-
         # 8 output layer
-        tnn.Linear(4096, n_classes),
-        tnn.BatchNorm1d(n_classes)
+        tnn.Linear(4096, n_classes)
     )
+
 
   def forward(self, x):
       out = self.layer1(x)
